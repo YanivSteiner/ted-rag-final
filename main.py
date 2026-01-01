@@ -30,7 +30,7 @@ def get_stats():
         "top_k": rag_system.top_k
     }
 
-@app.post("/api/query")
+@app.post("/api/prompt")
 def query_rag(request: QueryRequest):
     """Processes a query using RAG and returns the answer."""
     try:
