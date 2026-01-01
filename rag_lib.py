@@ -117,7 +117,10 @@ class TedRagSystem:
             })
             context_texts.append(match['metadata']['text'])
             
-        system_prompt = "You are a TED Talk assistant. Answer based ONLY on the context provided."
+        system_prompt = """You are a TED Talk assistant that answers questions strictly and only based on the TED dataset context provided to you (metadata and transcript passages).
+                           You must not use any external knowledge, the open internet, or information that is not explicitly contained in the retrieved context.
+                           If the answer cannot be determined from the provided context, respond: "I don't know based on the provided TED data."
+                           Always explain your answer using the given context, quoting or paraphrasing the relevant transcript or metadata when helpful."""
         context_str = "\n---\n".join(context_texts)
         user_prompt = f"Context:\n{context_str}\n\nQuestion: {query}\n\nAnswer:"
         
